@@ -1,0 +1,7 @@
+<Context>
+<Resource name="jdbc/wsFactoryDS" auth="Container"
+          type="javax.sql.DataSource" driverClassName="org.postgresql.Driver"
+          url="jdbc:postgresql://192.168.33.11:5432/ws_factory_development"
+          username="vagrant" password="vagrant" maxActive="20" maxIdle="10"
+maxWait="-1"/>
+</Context>

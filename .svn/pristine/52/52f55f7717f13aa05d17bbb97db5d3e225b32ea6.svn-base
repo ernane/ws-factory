@@ -1,0 +1,55 @@
+package controller;
+
+import java.util.List;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.core.UriInfo;
+
+import model.Parametros;
+import model.Servicos;
+
+@Path("/{servico}/")
+public class MainAcess {
+	@GET
+	@Produces("text/html")
+	public String controlador(@PathParam("servico") String servico,
+			@Context UriInfo ui) {
+		MultivaluedMap<String, String> queryParams = ui.getQueryParameters();
+		
+		ServicosController cServicos = new ServicosController();
+		List<Servicos> lServicos = cServicos.Listar();
+
+		boolean validar = false;
+		
+		String retorno = "";
+		
+		for (Servicos s : lServicos) {
+			if (s.getUri().equals(servico)) {
+				List<Parametros> lParametro = s.getParametros();
+				retorno += "Existe servico: "+s.getUri() +"<br>";
+				for(Parametros p : lParametro){
+					if( queryParams.containsKey(p.getChave())){
+						retorno += "Existe parametro: "+p.getChave()+ "<br>";
+						validar = true;
+					}
+				}
+				if(validar){
+					retorno += s.getAcao();
+				}
+			}
+			// VERIFICA SERVIÇOS EXISTENTES
+		}
+
+		return retorno;
+
+	}
+
+}

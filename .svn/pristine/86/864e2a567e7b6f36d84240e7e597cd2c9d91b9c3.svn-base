@@ -1,0 +1,40 @@
+package controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import dao.ServicosDAO;
+import model.Parametro;
+import model.Servico;
+
+public class ServicosController {
+
+	public List<Servico> Listar() {
+		
+		
+		List<Servico> lServicos = new ArrayList<Servico>();
+		
+		Parametro pConsultacadastro1 = new Parametro(1, "tipo");
+		Parametro pConsultacadastro2 = new Parametro(1, "identificacao");
+		
+		List<Parametro> lpConsultaCadastro = new ArrayList<Parametro>();
+		//SERVICO CONSULTA CADASTRO [PARAMETROS]
+		
+		
+		lpConsultaCadastro.add(pConsultacadastro1);
+		lpConsultaCadastro.add(pConsultacadastro2);
+				
+		Servico consultaCadastro = new Servico();
+		consultaCadastro.setUri("consultaCadastro");
+		//consultaCadastro.setParametros(lpConsultaCadastro);
+		ServicosDAO servico = new ServicosDAO();
+		servico.insertUpdate(consultaCadastro);
+		
+		lServicos.add(consultaCadastro);
+		//SERVICO CONSULTA CADASTRO
+		
+		return lServicos;
+		
+	}
+	
+}

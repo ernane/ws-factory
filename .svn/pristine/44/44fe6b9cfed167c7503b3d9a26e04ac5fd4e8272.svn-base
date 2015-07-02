@@ -1,0 +1,11 @@
+package dao;
+
+import java.util.List;
+
+public interface DAO {
+	public List<Object> list();
+
+	public boolean insertUpdate(Object o);
+
+	public int delete();
+}

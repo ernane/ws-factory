@@ -1,0 +1,33 @@
+package controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import model.Parametros;
+import model.Servicos;
+
+public class ServicosController {
+
+	public List<Servicos> Listar() {
+		List<Servicos> lServicos = new ArrayList<Servicos>();
+		
+		Parametros pConsultacadastro1 = new Parametros(1, "tipo");
+		Parametros pConsultacadastro2 = new Parametros(1, "identificacao");
+		
+		List<Parametros> lpConsultaCadastro = new ArrayList<Parametros>();
+		//SERVICO CONSULTA CADASTRO [PARAMETROS]
+		
+		
+		lpConsultaCadastro.add(pConsultacadastro1);
+		lpConsultaCadastro.add(pConsultacadastro2);
+				
+		Servicos consultaCadastro = new Servicos("consultaCadastro", "Consultar cadastro SEFA-PA", 1, "ação executada", lpConsultaCadastro);
+		
+		lServicos.add(consultaCadastro);
+		//SERVICO CONSULTA CADASTRO
+		
+		return lServicos;
+		
+	}
+	
+}

@@ -1,0 +1,33 @@
+package model;
+
+public class Parametros {
+	
+	private int idServico;
+	private String chave;
+		
+	public Parametros(int idServico, String chave) {
+		super();
+		this.idServico = idServico;
+		this.chave = chave;
+	}
+	
+	public String getChave() {
+		return chave;
+	}
+	
+	public void setChave(String chave) {
+		this.chave = chave;
+	}
+	
+	
+	public int getIdServico() {
+		return idServico;
+	}
+
+	public void setIdServico(int idServico) {
+		this.idServico = idServico;
+	}
+	
+	
+	
+}

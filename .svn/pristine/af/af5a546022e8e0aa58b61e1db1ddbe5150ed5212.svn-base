@@ -1,0 +1,49 @@
+package dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import model.Servico;
+
+
+public class ServicosDAO implements DAO{
+
+	public List<Object> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean insertUpdate(Object o) {
+		EntityManager entityManager = null;
+		
+		try {
+			entityManager = DataSource.load();	
+			System.out.println("Data source criado com sucesso");
+		try {
+			entityManager.getTransaction().begin();
+			entityManager.merge((Servico) o);
+			entityManager.getTransaction().commit();
+			entityManager.close();
+		} catch (Exception e) {
+			System.out.println("Erro ao inserir serviço"+e.getMessage());
+			entityManager.getTransaction().rollback();
+			return false;
+		}			
+		} catch (Exception e) {
+			System.out.println("Erro ao carregar data source");
+			return false;
+		}
+				
+		return true;
+	}
+
+	public int delete() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	
+
+	
+}
